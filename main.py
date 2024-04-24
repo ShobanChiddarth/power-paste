@@ -8,57 +8,59 @@ def on_press_power_paste():
     dont_close_brackets = True
 
     string  = pyperclip.paste()
+    try:
+        if remove_indent:
+            string = '\n'.join(list(map(str.strip, string.split('\n'))))
+        
+        if dont_close_brackets:
+            singe_string_count = 0
+            double_string_count = 0
+            brackets = {'normal':0, 'flower': 0, 'square': 0, 'angular': 0}
+            for i in string:
+                if i == "'":
+                    singe_string_count += 1
+                elif i == '"':
+                    double_string_count += 1
+                elif i == '(':
+                    brackets['normal'] += 1
+                elif i=='{':
+                    brackets['flower'] += 1
+                elif i=='[':
+                    brackets['square'] += 1
+                elif i=='<':
+                    brackets['angular'] += 1
 
-    if remove_indent:
-        string = '\n'.join(list(map(str.strip, string.split('\n'))))
-    
-    if dont_close_brackets:
-        singe_string_count = 0
-        double_string_count = 0
-        brackets = {'normal':0, 'flower': 0, 'square': 0, 'angular': 0}
-        for i in string:
-            if i == "'":
-                singe_string_count += 1
-            elif i == '"':
-                double_string_count += 1
-            elif i == '(':
-                brackets['normal'] += 1
-            elif i=='{':
-                brackets['flower'] += 1
-            elif i=='[':
-                brackets['square'] += 1
-            elif i=='<':
-                brackets['angular'] += 1
+                if (i in ['"', "'"]):
+                    if i in '"':
+                        if double_string_count % 2 != 0:
+                            pyautogui.typewrite(i)
+                        else:
+                            pyautogui.press('right')
+                    elif i in "'":
+                        if singe_string_count % 2 != 0:
+                            pyautogui.typewrite(i)
+                        else:
+                            pyautogui.press('right')
 
-            if (i in ['"', "'"]):
-                if i in '"':
-                    if double_string_count % 2 != 0:
-                        pyautogui.typewrite(i)
+                elif i in [')', '}', ']', '>']:
+                    if brackets['normal'] > 0 and i == ')':
+                        brackets['normal'] -= 1
+                    elif brackets['flower'] > 0 and i == '}':
+                        brackets['flower'] -= 1
+                    elif brackets['square'] > 0 and i == ']':
+                        brackets['square'] -= 1
+                    elif brackets['angular'] > 0 and i == '>':
+                        brackets['angular'] -= 1
                     else:
-                        pyautogui.press('right')
-                elif i in "'":
-                    if singe_string_count % 2 != 0:
                         pyautogui.typewrite(i)
-                    else:
-                        pyautogui.press('right')
-
-            elif i in [')', '}', ']', '>']:
-                if brackets['normal'] > 0 and i == ')':
-                    brackets['normal'] -= 1
-                elif brackets['flower'] > 0 and i == '}':
-                    brackets['flower'] -= 1
-                elif brackets['square'] > 0 and i == ']':
-                    brackets['square'] -= 1
-                elif brackets['angular'] > 0 and i == '>':
-                    brackets['angular'] -= 1
+                    pyautogui.press('right')
                 else:
                     pyautogui.typewrite(i)
-                pyautogui.press('right')
-            else:
-                pyautogui.typewrite(i)
-    else:
-        pyautogui.typewrite(string)
-    print("Successfully Power Pasted")
+        else:
+            pyautogui.typewrite(string)
+        print("Successfully Power Pasted")
+    except pyautogui.FailSafeException as e:
+        print("Stopped Power Pasting |", e)
 
 
 

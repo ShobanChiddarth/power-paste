@@ -21,4 +21,4 @@ For pasting on websites that do not allow pasting.
 6. If you want it to type faster, you could  set [line 8](./main.py#L8) to `False` but manually remove extra brackets
    after it finishes running
 7. Press delete if you want to stop the program while it is not typing anything
-8. Move the mouse to bottom left corner (don't click anything) if you want to stop the program while it is typing
+8. Move the mouse to bottom left corner (don't click anything) while it is typing to stop typing.
