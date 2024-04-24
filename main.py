@@ -35,12 +35,12 @@ def on_press_power_paste():
                     if double_string_count % 2 != 0:
                         pyautogui.typewrite(i)
                     else:
-                        pyautogui.press('rightarrow')
+                        pyautogui.press('right')
                 elif i in "'":
                     if singe_string_count % 2 != 0:
                         pyautogui.typewrite(i)
                     else:
-                        pyautogui.press('rightarrow')
+                        pyautogui.press('right')
 
             elif i in [')', '}', ']', '>']:
                 if brackets['normal'] > 0 and i == ')':
@@ -53,7 +53,7 @@ def on_press_power_paste():
                     brackets['angular'] -= 1
                 else:
                     pyautogui.typewrite(i)
-                pyautogui.press('rightarrow')
+                pyautogui.press('right')
             else:
                 pyautogui.typewrite(i)
     else:
