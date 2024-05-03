@@ -57,7 +57,7 @@ def on_press_power_paste():
                 else:
                     pyautogui.typewrite(i)
         else:
-            pyautogui.typewrite(string)
+            pyautogui.typewrite(string, interval=0.05)
         print("Successfully Power Pasted")
     except pyautogui.FailSafeException as e:
         print("Stopped Power Pasting |", e)
