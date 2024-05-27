@@ -5,7 +5,7 @@ from pynput import keyboard
 
 def on_press_power_paste():
     remove_indent = True
-    dont_close_brackets = True
+    dont_close_brackets = False
 
     string  = pyperclip.paste()
     try:
@@ -57,7 +57,7 @@ def on_press_power_paste():
                 else:
                     pyautogui.typewrite(i)
         else:
-            pyautogui.typewrite(string, interval=0.05)
+            pyautogui.typewrite(string, interval=0.035)
         print("Successfully Power Pasted")
     except pyautogui.FailSafeException as e:
         print("Stopped Power Pasting |", e)

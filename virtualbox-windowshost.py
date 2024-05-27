@@ -1,16 +1,17 @@
 import sys
+import time
 import subprocess
 import pyperclip
 from pynput import keyboard
 
 
 def type_in_vm(string, VMname="Win10"):
-    subprocess.Popen([r"C:\Program Files\Oracle\Virtualbox\VBoxManage.exe", "controlvm", VMname,'keyboardputstring', string])
+    subprocess.run([r"C:\Program Files\Oracle\Virtualbox\VBoxManage.exe", "controlvm", VMname,'keyboardputstring', string])
 
 
 def on_press_power_paste():
-    remove_indent = True
-    dont_close_brackets = True
+    remove_indent = True    
+    dont_close_brackets = False
 
     string  = pyperclip.paste()
     
@@ -67,6 +68,8 @@ def on_press_power_paste():
     # except pyautogui.FailSafeException as e:
     #     print("Stopped Power Pasting |", e)
 
+    # for i in string:
+    #     time.sleep(0.003)
     type_in_vm(string)
 
 
