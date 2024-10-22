@@ -14,11 +14,11 @@ For pasting on websites that do not allow pasting.
 ### Steps to get this running
 1. Clone this repo
 2. `pip install -r requirements.txt`
-3. python main.py
+3. `python main.py`
 4. Place curson on text field and press f8 (it will start typing what you have copied earlier)
-5. If your text field does not have autocomplete for bracket open close, quotation mark open close, auto indent,
-   you may turn them off at [main.py line 7](./main.py#L7) and [line 8](./main.py#L8) by setting them to `False`
-6. If you want it to type faster, you could  set [line 8](./main.py#L8) to `False` but manually remove extra brackets
-   after it finishes running
 7. Press delete if you want to stop the program while it is not typing anything
 8. Move the mouse to any corner (don't click anything) while it is typing to stop typing.
+9. Do not click on anything while the program is typing
+
+### About websites that have forced code autocomplete
+Check the folder [forced_autocomplete](./forced_autocomplete/). There are different files for different types of forced autocomplete.
