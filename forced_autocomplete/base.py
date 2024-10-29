@@ -1,3 +1,10 @@
+"""\
+- Presses right arrow for every bracket close (since the close bracket character will be autocompleted) [")", "}", "]", ">"]
+- Presses right arrow for every string close (since the close string character will be autocompleted) ['"', "'"]
+- Has time interval for every 4th character, space, or bracket close
+- Can remove indentation (optional)
+- Can close brackets (optional)
+"""
 import sys
 import pyautogui
 import pyperclip

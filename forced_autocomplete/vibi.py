@@ -1,4 +1,8 @@
-
+"""\
+- Can remove indent (optional)
+- `dont_close_brackets` variable is used to determine to implement time intervals on closing brackets or not, close bracket characters are typed no matter what
+- Has time intervals for every 4th character, space, or bracket close only if `dont_close_brackets` is True
+"""
 import sys
 import time
 import pyautogui
@@ -28,6 +32,10 @@ def on_press_power_paste():
                         time.sleep(0.005)
                     else:
                         pyautogui.typewrite(i)
+        # added an else case to `dont_close_brackets`
+        # now it will type the whole thing without any time intervals, in case `dont_close_brackets` is False
+        else:
+            pyautogui.typewrite(string)
             
         print("Successfully Power Pasted")
     except pyautogui.FailSafeException as e:
