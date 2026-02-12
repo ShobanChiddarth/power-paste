@@ -2,6 +2,9 @@
 # Created by https://www.toptal.com/developers/gitignore/api/windows,visualstudiocode,linux,python
 # Edit at https://www.toptal.com/developers/gitignore?templates=windows,visualstudiocode,linux,python
 
+### Custom ###
+*.content.txt
+
 ### Linux ###
 *~
 
