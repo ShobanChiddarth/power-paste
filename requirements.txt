@@ -1,1 +1,3 @@
-pyautoguipynputplaysound
+PyAutoGUI==0.9.54
+pynput==1.8.1
+playsound
